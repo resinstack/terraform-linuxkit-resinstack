@@ -15,6 +15,12 @@ data "linuxkit_config" "build" {
     data.linuxkit_image.rngd_svc.id,
     var.enable_console ? [data.linuxkit_image.getty.id] : [],
     var.enable_sshd ? [data.linuxkit_image.sshd.id] : [],
+    var.enable_consul ? [data.linuxkit_image.consul.id] : [],
+  ])
+
+  files = flatten([
+    var.enable_consul ? [data.linuxkit_file.consul_base.id] : [],
+    var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
   ])
 }
 
