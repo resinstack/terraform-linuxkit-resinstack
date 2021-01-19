@@ -20,7 +20,7 @@ data "linuxkit_image" "sysctl" {
 data "linuxkit_image" "dhcp_boot" {
   name    = "dhcpcd_boot"
   image   = "linuxkit/dhcpcd:${var.system_version_dhcpcd != "" ? var.system_version_dhcpcd : var.system_version_unified}"
-  command = ["/sbin/dhcpcd", "--nobackground", "-d", "-f", "/dhcpcd.conf", "-1"]
+  command = ["/sbin/dhcpcd", "--nobackground", "-d", "-f", "/dhcpcd.conf", "-1", "-4"]
 }
 
 data "linuxkit_image" "dhcp_svc" {
