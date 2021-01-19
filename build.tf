@@ -26,5 +26,5 @@ data "linuxkit_config" "build" {
 
 resource "linuxkit_build" "build" {
   config_yaml = data.linuxkit_config.build.yaml
-  destination = "${path.root}/${var.base_name}.tar"
+  destination = "${local.output_base}.tar"
 }
