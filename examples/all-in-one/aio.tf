@@ -13,8 +13,8 @@ module "all_in_one" {
   source = "../../"
 
   enable_console = true
-
   consul_server = true
+  build_raw_bios = true
 }
 
 data "linuxkit_metadata" "aio" {

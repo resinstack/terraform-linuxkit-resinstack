@@ -15,3 +15,9 @@ variable "consul_server" {
   description = "Enable Consul server resources"
   default     = false
 }
+
+variable "consul_default_deny" {
+  type        = bool
+  description = "Enable a default-deny ACL policy"
+  default     = true
+}

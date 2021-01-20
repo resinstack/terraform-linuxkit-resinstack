@@ -1,3 +1,8 @@
+locals {
+  has_consul = (var.enable_consul || var.consul_server)
+  consul_acl = (var.enable_consul || var.consul_server) && var.consul_default_deny
+}
+
 data "linuxkit_config" "build" {
   kernel = data.linuxkit_kernel.kernel.id
   init   = [data.linuxkit_init.init.id]
@@ -19,8 +24,9 @@ data "linuxkit_config" "build" {
   ])
 
   files = flatten([
-    var.enable_consul ? [data.linuxkit_file.consul_base.id] : [],
+    local.has_consul ? [data.linuxkit_file.consul_base.id] : [],
     var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
+    local.consul_acl ? [data.linuxkit_file.consul_acl.id] : [],
   ])
 }
 

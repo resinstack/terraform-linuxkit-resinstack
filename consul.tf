@@ -38,3 +38,10 @@ data "linuxkit_file" "consul_server" {
   mode     = "0644"
   optional = false
 }
+
+data "linuxkit_file" "consul_acl" {
+  path     = "etc/consul/10-acl.hcl"
+  source   = "${path.module}/files/consul/10-acl.hcl"
+  mode     = "0644"
+  optional = false
+}
