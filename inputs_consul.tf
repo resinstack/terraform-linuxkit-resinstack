@@ -16,8 +16,13 @@ variable "consul_server" {
   default     = false
 }
 
-variable "consul_default_deny" {
-  type        = bool
-  description = "Enable a default-deny ACL policy"
-  default     = true
+variable "consul_acl" {
+  type        = string
+  description = "Policy to be used by consul"
+  default     = "deny"
+
+  validation {
+    condition     = contains(["allow", "deny"], var.consul_acl)
+    error_message = "Consul ACL must be either 'allow' or 'deny'."
+  }
 }

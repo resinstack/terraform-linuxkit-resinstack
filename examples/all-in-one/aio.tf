@@ -14,6 +14,7 @@ module "all_in_one" {
 
   enable_console = true
   consul_server = true
+  consul_acl = "allow"
   build_raw_bios = true
 }
 
