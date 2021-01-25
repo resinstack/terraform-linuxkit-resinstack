@@ -81,3 +81,9 @@ variable "system_version_rngd" {
   description = "Use a different rngd than the unified version number"
   default     = ""
 }
+
+variable "system_metadata_providers" {
+  type        = list(string)
+  description = "List of metadata providers"
+  default     = []
+}

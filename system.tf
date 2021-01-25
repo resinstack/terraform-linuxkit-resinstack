@@ -34,8 +34,9 @@ data "linuxkit_image" "acpid" {
 }
 
 data "linuxkit_image" "metadata" {
-  name  = "metadata"
-  image = "linuxkit/metadata:${var.system_version_metadata != "" ? var.system_version_metadata : var.system_version_unified}"
+  name    = "metadata"
+  image   = "linuxkit/metadata:${var.system_version_metadata != "" ? var.system_version_metadata : var.system_version_unified}"
+  command = flatten([["/usr/bin/metadata"], var.system_metadata_providers])
 }
 
 data "linuxkit_image" "getty" {
