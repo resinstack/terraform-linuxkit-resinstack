@@ -82,6 +82,12 @@ variable "system_version_rngd" {
   default     = ""
 }
 
+variable "system_version_ntpd" {
+  type        = string
+  description = "Use a different ntpd than the unified version number"
+  default     = ""
+}
+
 variable "system_metadata_providers" {
   type        = list(string)
   description = "List of metadata providers"

@@ -64,3 +64,8 @@ data "linuxkit_image" "rngd_svc" {
   name  = "rngd"
   image = "linuxkit/rngd:${var.system_version_rngd != "" ? var.system_version_rngd : var.system_version_unified}"
 }
+
+data "linuxkit_image" "ntpd" {
+  name  = "openntpd"
+  image = "linuxkit/openntpd:${var.system_version_ntpd != "" ? var.system_version_ntpd : var.system_version_unified}"
+}

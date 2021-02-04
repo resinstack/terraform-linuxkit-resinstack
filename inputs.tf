@@ -15,3 +15,9 @@ variable "enable_sshd" {
   description = "Include sshd in the image"
   default     = false
 }
+
+variable "enable_ntpd" {
+  type        = bool
+  description = "Enable ntpd (only necessary in bare metal environments)."
+  default     = false
+}

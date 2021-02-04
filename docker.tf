@@ -5,6 +5,7 @@ data "linuxkit_image" "docker" {
   command = ["/usr/local/bin/docker-init", "/usr/local/bin/dockerd"]
 
   capabilities = ["all"]
+  net          = "host"
 
   mounts {
     type    = "cgroup"
