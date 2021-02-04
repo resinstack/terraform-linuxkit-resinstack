@@ -33,6 +33,7 @@ data "linuxkit_config" "build" {
     local.has_consul ? [data.linuxkit_file.coredns_corefile.id] : [],
     local.has_consul ? [data.linuxkit_file.coredns_resolvconf.id] : [],
     local.has_nomad ? [data.linuxkit_file.nomad_base.id] : [],
+    local.has_nomad ? [data.linuxkit_file.nomad_acl.id] : [],
     var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
     var.enable_docker ? [data.linuxkit_file.docker_config.id] : [],
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],

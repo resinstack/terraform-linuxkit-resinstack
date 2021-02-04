@@ -13,11 +13,12 @@ module "all_in_one" {
   source = "../../"
 
   enable_console = true
-  consul_server = true
-  consul_acl = "allow"
+  consul_server  = true
+  consul_acl     = "allow"
 
   nomad_server = true
   nomad_client = true
+  nomad_acl    = false
 
   enable_docker = true
 

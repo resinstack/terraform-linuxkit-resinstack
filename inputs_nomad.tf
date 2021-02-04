@@ -15,3 +15,9 @@ variable "nomad_version" {
   description = "Nomad version to run"
   default     = "v1.0.0r1"
 }
+
+variable "nomad_acl" {
+  type        = bool
+  description = "Enforce Nomad ACLs"
+  default     = true
+}
