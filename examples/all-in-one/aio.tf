@@ -20,9 +20,12 @@ module "all_in_one" {
   nomad_client = true
   nomad_acl    = false
 
+  vault_server = true
+
   enable_docker = true
 
   build_raw_bios = true
+  system_metadata_providers = ["cdrom"]
 }
 
 data "linuxkit_metadata" "aio" {

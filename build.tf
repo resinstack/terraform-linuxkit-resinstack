@@ -25,6 +25,7 @@ data "linuxkit_config" "build" {
     var.enable_docker ? [data.linuxkit_image.docker.id] : [],
     var.enable_ntpd ? [data.linuxkit_image.ntpd.id] : [],
     var.enable_sshd ? [data.linuxkit_image.sshd.id] : [],
+    var.vault_server ? [data.linuxkit_image.vault.id] : [],
   ])
 
   files = flatten([
