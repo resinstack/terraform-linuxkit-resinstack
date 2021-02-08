@@ -13,6 +13,8 @@ module "all_in_one" {
   source = "../../"
 
   enable_console = true
+  enable_emissary = true
+
   consul_server  = true
   consul_acl     = "allow"
 

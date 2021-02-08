@@ -23,6 +23,7 @@ data "linuxkit_config" "build" {
     var.enable_console ? [data.linuxkit_image.getty.id] : [],
     var.enable_consul ? [data.linuxkit_image.consul.id] : [],
     var.enable_docker ? [data.linuxkit_image.docker.id] : [],
+    var.enable_emissary ? [data.linuxkit_image.emissary.id] : [],
     var.enable_ntpd ? [data.linuxkit_image.ntpd.id] : [],
     var.enable_sshd ? [data.linuxkit_image.sshd.id] : [],
     var.vault_server ? [data.linuxkit_image.vault.id] : [],
@@ -37,6 +38,7 @@ data "linuxkit_config" "build" {
     local.has_nomad ? [data.linuxkit_file.nomad_acl.id] : [],
     var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
     var.enable_docker ? [data.linuxkit_file.docker_config.id] : [],
+    var.enable_emissary ? [data.linuxkit_file.emissary_restart.id] : [],
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],
   ])
