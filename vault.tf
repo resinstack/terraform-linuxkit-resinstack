@@ -5,6 +5,7 @@ data "linuxkit_image" "vault" {
   command = [
     "/bin/vault", "server",
     "-config", "/var/run/config/vault",
+    "-config", "/etc/vault",
   ]
 
   capabilities = [
@@ -16,6 +17,7 @@ data "linuxkit_image" "vault" {
   binds = [
     "/var/run/config/vault:/var/run/config/vault",
     "/etc/resolv.cluster:/etc/resolv.conf",
+    "/etc/vault:/etc/vault",
   ]
 
   runtime {
@@ -23,4 +25,12 @@ data "linuxkit_image" "vault" {
       "/var/run/config/vault",
     ]
   }
+}
+
+data "linuxkit_file" "vault_api_addr" {
+  path = "/vault/10-api.hcl"
+
+  contents = "api_addr = \"${var.vault_api_addr}\"\n"
+  mode = "0644"
+  optional = false
 }
