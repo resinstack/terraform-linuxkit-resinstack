@@ -1,5 +1,5 @@
 data "linuxkit_image" "emissary" {
-  name = "emissary"
+  name  = "emissary"
   image = "ghcr.io/resinstack/emissary:${var.emissary_version}"
 
   capabilities = ["CAP_SYS_ADMIN"]
@@ -20,8 +20,8 @@ data "linuxkit_image" "emissary" {
 }
 
 data "linuxkit_file" "emissary_restart" {
-  path = "usr/bin/restart"
-  source = "${path.module}/files/emissary/restart"
-  mode = "0755"
+  path     = "usr/bin/restart"
+  source   = "${path.module}/files/emissary/restart"
+  mode     = "0755"
   optional = false
 }

@@ -1,11 +1,11 @@
 variable "vault_server" {
-  type = bool
+  type        = bool
   description = "Enable the vault server"
-  default = false
+  default     = false
 }
 
 variable "vault_version" {
-  type = string
+  type        = string
   description = "Vault server version"
-  default = "1.6.2"
+  default     = "1.6.2"
 }

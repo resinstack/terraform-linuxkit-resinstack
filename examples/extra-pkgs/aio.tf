@@ -9,6 +9,11 @@ terraform {
 
 provider "linuxkit" {}
 
+data "linuxkit_image" "node_exporter" {
+  name  = "node_exporter"
+  image = "linuxkit/node_exporter:v0.8"
+}
+
 module "all_in_one" {
   source = "../../"
 
@@ -25,6 +30,8 @@ module "all_in_one" {
   vault_server = true
 
   enable_docker = true
+
+  custom_services = [data.linuxkit_image.node_exporter.id]
 
   build_raw_bios            = true
   system_metadata_providers = ["cdrom"]

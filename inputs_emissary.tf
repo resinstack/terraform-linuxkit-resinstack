@@ -1,11 +1,11 @@
 variable "enable_emissary" {
-  type = bool
+  type        = bool
   description = "Include Emissary for one-shot secrets"
-  default = true
+  default     = true
 }
 
 variable "emissary_version" {
-  type = string
+  type        = string
   description = "Emissary version"
-  default = "v0.3.0"
+  default     = "v0.3.0"
 }

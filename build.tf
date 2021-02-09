@@ -7,12 +7,13 @@ data "linuxkit_config" "build" {
   kernel = data.linuxkit_kernel.kernel.id
   init   = [data.linuxkit_init.init.id]
 
-  onboot = [
+  onboot = flatten([
     data.linuxkit_image.sysctl.id,
     data.linuxkit_image.rngd_boot.id,
     data.linuxkit_image.dhcp_boot.id,
     data.linuxkit_image.metadata.id,
-  ]
+    var.custom_onboot,
+  ])
 
   services = flatten([
     data.linuxkit_image.acpid.id,
@@ -27,6 +28,7 @@ data "linuxkit_config" "build" {
     var.enable_ntpd ? [data.linuxkit_image.ntpd.id] : [],
     var.enable_sshd ? [data.linuxkit_image.sshd.id] : [],
     var.vault_server ? [data.linuxkit_image.vault.id] : [],
+    var.custom_services,
   ])
 
   files = flatten([
@@ -41,6 +43,7 @@ data "linuxkit_config" "build" {
     var.enable_emissary ? [data.linuxkit_file.emissary_restart.id] : [],
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],
+    var.custom_files
   ])
 }
 
