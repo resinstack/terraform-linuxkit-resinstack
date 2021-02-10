@@ -28,9 +28,9 @@ data "linuxkit_image" "vault" {
 }
 
 data "linuxkit_file" "vault_api_addr" {
-  path = "/vault/10-api.hcl"
+  path = "etc/vault/10-api.hcl"
 
   contents = "api_addr = \"${var.vault_api_addr}\"\n"
-  mode = "0644"
+  mode     = "0644"
   optional = false
 }

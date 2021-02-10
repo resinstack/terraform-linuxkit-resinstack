@@ -43,6 +43,7 @@ data "linuxkit_config" "build" {
     var.enable_emissary ? [data.linuxkit_file.emissary_restart.id] : [],
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],
+    var.vault_server ? [data.linuxkit_file.vault_api_addr.id] : [],
     var.custom_files
   ])
 }

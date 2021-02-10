@@ -11,7 +11,7 @@ variable "vault_version" {
 }
 
 variable "vault_api_addr" {
-  type = string
+  type        = string
   description = "Vault API Address"
-  default = "http://active.vault.service.consul:8200"
+  default     = "http://active.vault.service.consul:8200"
 }
