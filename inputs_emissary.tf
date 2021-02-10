@@ -7,5 +7,5 @@ variable "enable_emissary" {
 variable "emissary_version" {
   type        = string
   description = "Emissary version"
-  default     = "v0.3.0"
+  default     = "v0.3.1"
 }
