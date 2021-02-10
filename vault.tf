@@ -27,10 +27,18 @@ data "linuxkit_image" "vault" {
   }
 }
 
-data "linuxkit_file" "vault_api_addr" {
-  path = "etc/vault/10-api.hcl"
+data "template_file" "vault_listener" {
+  template = file("${path.module}/tmpl/vault/10-listener.hcl")
+  vars = {
+    address     = var.vault_address
+    tls_disable = var.vault_tls_disable
+  }
+}
 
-  contents = "api_addr = \"${var.vault_api_addr}\"\n"
+data "linuxkit_file" "vault_listener" {
+  path = "etc/vault/10-listener.hcl"
+
+  contents = data.template_file.vault_listener.rendered
   mode     = "0644"
   optional = false
 }

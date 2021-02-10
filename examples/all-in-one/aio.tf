@@ -22,7 +22,8 @@ module "all_in_one" {
   nomad_client = true
   nomad_acl    = false
 
-  vault_server = true
+  vault_server      = true
+  vault_tls_disable = true
 
   enable_docker = true
 
