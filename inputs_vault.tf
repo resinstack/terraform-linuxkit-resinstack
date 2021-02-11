@@ -21,3 +21,9 @@ variable "vault_tls_disable" {
   description = "Disable TLS on Vault's bind -- NOT RECOMMENDED"
   default     = false
 }
+
+variable "vault_ui" {
+  type        = bool
+  description = "Enable the web UI"
+  default     = true
+}

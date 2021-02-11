@@ -42,3 +42,11 @@ data "linuxkit_file" "vault_listener" {
   mode     = "0644"
   optional = false
 }
+
+data "linuxkit_file" "vault_ui" {
+  path = "etc/vault/10-ui.hcl"
+
+  contents = "ui = true\n"
+  mode     = "0644"
+  optional = false
+}
