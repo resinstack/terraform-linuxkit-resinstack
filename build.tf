@@ -41,10 +41,11 @@ data "linuxkit_config" "build" {
     var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
     var.enable_docker ? [data.linuxkit_file.docker_config.id] : [],
     var.enable_emissary ? [data.linuxkit_file.emissary_restart.id] : [],
-    var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],
-    var.vault_server ? [data.linuxkit_file.vault_listener.id] : [],
+    var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
+    var.nomad_vault_integration ? [data.linuxkit_file.nomad_client_vault.id] : [],
     var.vault_server && var.vault_ui ? [data.linuxkit_file.vault_ui.id] : [],
+    var.vault_server ? [data.linuxkit_file.vault_listener.id] : [],
     var.custom_files
   ])
 }

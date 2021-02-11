@@ -66,3 +66,17 @@ data "linuxkit_file" "nomad_acl" {
   mode     = "0644"
   optional = false
 }
+
+data "linuxkit_file" "nomad_client_vault" {
+  path = "etc/nomad/50-vault.hcl"
+
+  contents = <<EOT
+vault {
+  enabled = true
+  address = "http://active.vault.service.consul:8200"
+}
+EOT
+
+  mode     = "0644"
+  optional = false
+}

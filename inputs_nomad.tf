@@ -21,3 +21,9 @@ variable "nomad_acl" {
   description = "Enforce Nomad ACLs"
   default     = true
 }
+
+variable "nomad_vault_integration" {
+  type        = bool
+  description = "Enable Vault integration"
+  default     = true
+}
