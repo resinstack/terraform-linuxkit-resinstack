@@ -15,3 +15,15 @@ variable "build_pxe" {
   description = "Build PXE files"
   default     = false
 }
+
+variable "build_aws" {
+  type        = bool
+  description = "Build AWS image"
+  default     = false
+}
+
+variable "build_aws_size" {
+  type        = number
+  description = "Size in MB for the AWS image"
+  default     = 1000
+}

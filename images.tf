@@ -19,3 +19,11 @@ resource "linuxkit_image_kernel_initrd" "kernel_initrd" {
     initrd  = "${local.output_base}_initrd"
   }
 }
+
+resource "linuxkit_image_aws" "aws" {
+  count = var.build_aws ? 1 : 0
+
+  build       = linuxkit_build.build.destination
+  size        = var.build_aws_size
+  destination = "${local.output_base}_aws.img"
+}
