@@ -32,6 +32,7 @@ data "linuxkit_config" "build" {
   ])
 
   files = flatten([
+    data.linuxkit_file.containerd_toml.id,
     local.has_consul ? [data.linuxkit_file.consul_acl.id] : [],
     local.has_consul ? [data.linuxkit_file.consul_base.id] : [],
     local.has_consul ? [data.linuxkit_file.coredns_corefile.id] : [],

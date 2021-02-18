@@ -69,3 +69,17 @@ data "linuxkit_image" "ntpd" {
   name  = "openntpd"
   image = "linuxkit/openntpd:${var.system_version_ntpd != "" ? var.system_version_ntpd : var.system_version_unified}"
 }
+
+data "template_file" "containerd_toml" {
+  template = file("${path.module}/tmpl/system/runtime-config.toml.tpl")
+  vars = {
+    log_level = var.system_containerd_log_level
+  }
+}
+
+data "linuxkit_file" "containerd_toml" {
+  path     = "etc/containerd/runtime-config.toml"
+  contents = data.template_file.containerd_toml.rendered
+  mode     = "0644"
+  optional = false
+}

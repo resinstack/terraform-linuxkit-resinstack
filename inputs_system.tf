@@ -93,3 +93,9 @@ variable "system_metadata_providers" {
   description = "List of metadata providers"
   default     = []
 }
+
+variable "system_containerd_log_level" {
+  type        = string
+  description = "Log level for containerd"
+  default     = "info"
+}
