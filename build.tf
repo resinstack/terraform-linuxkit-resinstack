@@ -45,7 +45,6 @@ data "linuxkit_config" "build" {
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_vault_integration ? [data.linuxkit_file.nomad_client_vault.id] : [],
     var.vault_server && var.vault_ui ? [data.linuxkit_file.vault_ui.id] : [],
-    var.vault_server ? [data.linuxkit_file.vault_listener.id] : [],
     var.custom_files
   ])
 }

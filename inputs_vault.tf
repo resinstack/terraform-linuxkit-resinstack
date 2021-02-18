@@ -10,18 +10,6 @@ variable "vault_version" {
   default     = "1.6.2"
 }
 
-variable "vault_address" {
-  type        = string
-  description = "Vault bind address"
-  default     = "0.0.0.0:8200"
-}
-
-variable "vault_tls_disable" {
-  type        = bool
-  description = "Disable TLS on Vault's bind -- NOT RECOMMENDED"
-  default     = false
-}
-
 variable "vault_ui" {
   type        = bool
   description = "Enable the web UI"

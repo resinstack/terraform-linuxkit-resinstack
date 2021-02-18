@@ -27,22 +27,6 @@ data "linuxkit_image" "vault" {
   }
 }
 
-data "template_file" "vault_listener" {
-  template = file("${path.module}/tmpl/vault/10-listener.hcl")
-  vars = {
-    address     = var.vault_address
-    tls_disable = var.vault_tls_disable
-  }
-}
-
-data "linuxkit_file" "vault_listener" {
-  path = "etc/vault/10-listener.hcl"
-
-  contents = data.template_file.vault_listener.rendered
-  mode     = "0644"
-  optional = false
-}
-
 data "linuxkit_file" "vault_ui" {
   path = "etc/vault/10-ui.hcl"
 
