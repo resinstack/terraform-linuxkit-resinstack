@@ -13,6 +13,7 @@ data "linuxkit_image" "docker" {
   }
 
   binds = [
+    "/dev:/dev",
     "/etc/docker/daemon.json:/etc/docker/daemon.json",
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/lib/modules:/lib/modules",
