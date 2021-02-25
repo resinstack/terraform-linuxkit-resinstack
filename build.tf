@@ -12,6 +12,8 @@ data "linuxkit_config" "build" {
     data.linuxkit_image.rngd_boot.id,
     data.linuxkit_image.dhcp_boot.id,
     data.linuxkit_image.metadata.id,
+    var.enable_persist ? [data.linuxkit_image.format.id] : [],
+    var.enable_persist ? [data.linuxkit_image.mount.id] : [],
     var.custom_onboot,
   ])
 

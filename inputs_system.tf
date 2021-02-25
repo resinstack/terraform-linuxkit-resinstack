@@ -88,6 +88,24 @@ variable "system_version_ntpd" {
   default     = ""
 }
 
+variable "system_version_format" {
+  type        = string
+  description = "Use a different format than the unified version number"
+  default     = ""
+}
+
+variable "system_version_mount" {
+  type        = string
+  description = "Use a different mount than the unified version number"
+  default     = ""
+}
+
+variable "enable_persist" {
+  type        = bool
+  description = "Enable persistence for /var/persist.  Consumes the first unformatted disk"
+  default     = false
+}
+
 variable "system_metadata_providers" {
   type        = list(string)
   description = "List of metadata providers"

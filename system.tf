@@ -70,6 +70,21 @@ data "linuxkit_image" "ntpd" {
   image = "linuxkit/openntpd:${var.system_version_ntpd != "" ? var.system_version_ntpd : var.system_version_unified}"
 }
 
+data "linuxkit_image" "format" {
+  name  = "openformat"
+  image = "linuxkit/openformat:${var.system_version_format != "" ? var.system_version_format : var.system_version_unified}"
+}
+
+data "linuxkit_image" "mount" {
+  name    = "openmount"
+  image   = "linuxkit/openmount:${var.system_version_mount != "" ? var.system_version_mount : var.system_version_unified}"
+  command = ["/usr/bin/mountie", "/var/persist"]
+
+  runtime {
+    mkdir = ["var/persist"]
+  }
+}
+
 data "template_file" "containerd_toml" {
   template = file("${path.module}/tmpl/system/runtime-config.toml.tpl")
   vars = {
