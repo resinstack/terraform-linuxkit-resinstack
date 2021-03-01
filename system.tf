@@ -72,12 +72,12 @@ data "linuxkit_image" "ntpd" {
 
 data "linuxkit_image" "format" {
   name  = "openformat"
-  image = "linuxkit/openformat:${var.system_version_format != "" ? var.system_version_format : var.system_version_unified}"
+  image = "linuxkit/format:${var.system_version_format != "" ? var.system_version_format : var.system_version_unified}"
 }
 
 data "linuxkit_image" "mount" {
   name    = "openmount"
-  image   = "linuxkit/openmount:${var.system_version_mount != "" ? var.system_version_mount : var.system_version_unified}"
+  image   = "linuxkit/mount:${var.system_version_mount != "" ? var.system_version_mount : var.system_version_unified}"
   command = ["/usr/bin/mountie", "/var/persist"]
 
   runtime {
