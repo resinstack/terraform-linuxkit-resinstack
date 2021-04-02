@@ -117,3 +117,9 @@ variable "system_containerd_log_level" {
   description = "Log level for containerd"
   default     = "info"
 }
+
+variable "system_ntpd_servers" {
+  type        = string
+  description = "DNS hostname or single IP pointing to ntp sync source"
+  default     = "pool.ntp.org"
+}

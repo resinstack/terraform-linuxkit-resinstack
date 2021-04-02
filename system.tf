@@ -68,6 +68,10 @@ data "linuxkit_image" "rngd_svc" {
 data "linuxkit_image" "ntpd" {
   name  = "openntpd"
   image = "linuxkit/openntpd:${var.system_version_ntpd != "" ? var.system_version_ntpd : var.system_version_unified}"
+
+  binds = [
+    "/etc/ntpd.conf:/etc/ntpd.conf",
+  ]
 }
 
 data "linuxkit_image" "format" {
@@ -95,6 +99,13 @@ data "template_file" "containerd_toml" {
 data "linuxkit_file" "containerd_toml" {
   path     = "etc/containerd/runtime-config.toml"
   contents = data.template_file.containerd_toml.rendered
+  mode     = "0644"
+  optional = false
+}
+
+data "linuxkit_file" "ntpd_conf" {
+  contents = "servers ${var.system_ntpd_servers}\n"
+  path     = "etc/ntpd.conf"
   mode     = "0644"
   optional = false
 }

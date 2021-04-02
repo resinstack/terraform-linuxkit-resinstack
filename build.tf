@@ -44,6 +44,7 @@ data "linuxkit_config" "build" {
     var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
     var.enable_docker ? [data.linuxkit_file.docker_config.id] : [],
     var.enable_emissary ? [data.linuxkit_file.emissary_restart.id] : [],
+    var.enable_ntpd ? [data.linuxkit_file.ntpd_conf.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_vault_integration ? [data.linuxkit_file.nomad_client_vault.id] : [],
