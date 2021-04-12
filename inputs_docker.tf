@@ -1,7 +1,7 @@
 variable "docker_version" {
   type        = string
   description = "Docker version to run"
-  default     = "18.06.0-ce-dind"
+  default     = "20.10.6-dind"
 }
 
 variable "enable_docker" {

@@ -6,6 +6,7 @@ data "linuxkit_image" "docker" {
 
   capabilities = ["all"]
   net          = "host"
+  pid = "host"
 
   mounts {
     type    = "cgroup"
@@ -25,7 +26,6 @@ data "linuxkit_image" "docker" {
 
   runtime {
     mkdir = [
-      "/var/lib/docker",
       "/var/persist/docker",
     ]
   }
