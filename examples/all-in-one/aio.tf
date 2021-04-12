@@ -15,14 +15,16 @@ module "all_in_one" {
   enable_console  = true
   enable_emissary = true
 
-  consul_server = true
-  consul_acl    = "allow"
+  consul_server      = true
+  consul_acl         = "allow"
+  consul_acl_enabled = false
 
-  nomad_server = true
-  nomad_client = true
-  nomad_acl    = false
+  nomad_server            = true
+  nomad_client            = true
+  nomad_acl               = false
+  nomad_vault_integration = false
 
-  vault_server      = true
+  vault_server = true
 
   enable_docker = true
 

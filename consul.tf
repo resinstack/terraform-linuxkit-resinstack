@@ -42,7 +42,8 @@ data "linuxkit_file" "consul_server" {
 data "template_file" "consul_acl" {
   template = file("${path.module}/tmpl/consul/10-acl.hcl.tpl")
   vars = {
-    consul_acl = var.consul_acl
+    consul_acl  = var.consul_acl
+    acl_enabled = var.consul_acl_enabled
   }
 }
 

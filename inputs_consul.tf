@@ -26,3 +26,9 @@ variable "consul_acl" {
     error_message = "Consul ACL must be either 'allow' or 'deny'."
   }
 }
+
+variable "consul_acl_enabled" {
+  type        = bool
+  description = "Enable the acl system"
+  default     = true
+}

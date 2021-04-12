@@ -6,7 +6,7 @@ data "linuxkit_image" "docker" {
 
   capabilities = ["all"]
   net          = "host"
-  pid = "host"
+  pid          = "host"
 
   mounts {
     type    = "cgroup"
