@@ -4,7 +4,11 @@ if ! service restart "$1" ; then
     # This is an annoyingly effective kludge to get around
     # linuxkit/linuxkit#3586 where sometimes containers can't be
     # restarted, but getting rid of them and recreating them works.
+    # Furthermore there are some sleeps to work around various locks
+    # and state in the filesystem timing out.
     ctr -n services.linuxkit task rm "$1"
+    sleep 1
     ctr -n services.linuxkit container rm "$1"
+    sleep 15
     service start "$1"
 fi
