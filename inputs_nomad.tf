@@ -13,7 +13,7 @@ variable "nomad_client" {
 variable "nomad_version" {
   type        = string
   description = "Nomad version to run"
-  default     = "v1.1.1r0"
+  default     = "v1.1.2r0"
 }
 
 variable "nomad_acl" {
