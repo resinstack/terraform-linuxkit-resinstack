@@ -1,6 +1,6 @@
 data "linuxkit_image" "vault" {
   name  = "vault"
-  image = "vault:${var.vault_version}"
+  image = "hashicorp/vault:${var.vault_version}"
 
   command = [
     "/bin/vault", "server",
