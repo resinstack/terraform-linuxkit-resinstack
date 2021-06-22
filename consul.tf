@@ -1,6 +1,6 @@
 data "linuxkit_image" "consul" {
   name  = "consul"
-  image = "consul:${var.consul_version}"
+  image = "hashicorp/consul:${var.consul_version}"
 
   command = [
     "/bin/consul", "agent",
