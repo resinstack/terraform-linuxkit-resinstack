@@ -1,7 +1,7 @@
 variable "consul_version" {
   type        = string
   description = "Version of Consul to run"
-  default     = "1.10.0"
+  default     = "1.10.1"
 }
 
 variable "enable_consul" {
