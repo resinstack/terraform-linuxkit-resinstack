@@ -20,6 +20,16 @@ data "linuxkit_image" "nomad" {
     "/lib/modules:/lib/modules",
     "/run:/run:shared",
     "/var/persist:/var/persist:rshared",
+
+    # This looks really really dumb, but hear me out: Nomad needs to
+    # see the consul binary while doing connect things.  Rather than
+    # trying to include it with this nomad container and potentially
+    # including an out of date version and then needing to maintain
+    # two update criteria, we cheat and mount in the one that's at a
+    # particularly magic path from the adjacent consul service
+    # container.  Don't try this at home, filmed on a closed course,
+    # void where prohibited.
+    "/containers/services/consul/lower/bin/consul:/usr/local/bin/consul",
   ]
 
   rootfs_propagation = "shared"
