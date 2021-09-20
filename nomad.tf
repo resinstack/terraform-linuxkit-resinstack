@@ -3,7 +3,7 @@ data "linuxkit_image" "nomad" {
   image = "ghcr.io/resinstack/nomad:${var.nomad_version}"
 
   command = [
-    "/nomad", "agent",
+    "/usr/local/bin/nomad", "agent",
     "-config", "/etc/nomad",
     "-config", "/var/run/config/nomad"
   ]
