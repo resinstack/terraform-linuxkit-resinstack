@@ -7,7 +7,7 @@ variable "vault_server" {
 variable "vault_version" {
   type        = string
   description = "Vault server version"
-  default     = "1.8.1"
+  default     = "1.8.2"
 }
 
 variable "vault_ui" {
