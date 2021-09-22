@@ -1,7 +1,7 @@
 variable "system_kernel_image" {
   type        = string
   description = "Image containing a kernel and modules"
-  default     = "linuxkit/kernel:5.6.11"
+  default     = "linuxkit/kernel:5.4.129"
 }
 
 variable "system_kernel_cmdline" {
