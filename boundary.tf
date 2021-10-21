@@ -9,6 +9,7 @@ data "linuxkit_image" "boundary" {
 
   binds = [
     "/var/run/config/boundary:/var/run/config/boundary",
+    "/etc/resolv.conf:/etc/resolv.conf",
   ]
 
   capabilities = [
