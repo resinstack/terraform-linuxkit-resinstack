@@ -50,7 +50,6 @@ data "linuxkit_image" "sshd" {
   image = "linuxkit/sshd:${var.system_version_sshd != "" ? var.system_version_sshd : var.system_version_unified}"
   binds = [
     "/run/config/ssh/authorized_keys:/root/.ssh/authorized_keys",
-    "/etc/resolv.cluster:/etc/resolv.conf"
   ]
 }
 
