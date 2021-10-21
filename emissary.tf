@@ -6,7 +6,7 @@ data "linuxkit_image" "emissary" {
 
   binds = [
     "/containers:/containers",
-    "/etc/resolv.cluster:/etc/resolv.conf",
+    "/etc/resolv.conf:/etc/resolv.conf",
     "/run:/run",
     "/usr/bin/ctr:/usr/bin/ctr",
     "/usr/bin/restart:/usr/bin/restart",
