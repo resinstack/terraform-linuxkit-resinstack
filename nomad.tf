@@ -35,10 +35,12 @@ data "linuxkit_image" "nomad" {
   rootfs_propagation = "shared"
 
   runtime {
-    mkdir = [
+    mkdir = flatten([[
       "/var/persist/nomad",
       "/var/run/config/nomad",
-    ]
+    ],
+    var.nomad_mkdirs,
+    ])
   }
 }
 

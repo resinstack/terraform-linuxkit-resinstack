@@ -27,3 +27,9 @@ variable "nomad_vault_integration" {
   description = "Enable Vault integration"
   default     = true
 }
+
+variable "nomad_mkdirs" {
+  type = list(string)
+  description = "Supplemental directories to create before starting Nomad.  Useful for host volumes."
+  default = []
+}
