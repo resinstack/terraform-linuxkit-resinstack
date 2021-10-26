@@ -8,7 +8,7 @@ data "linuxkit_image" "boundary" {
   ]
 
   binds = [
-    "/var/run/config/boundary:/var/run/config/boundary",
+    "/run/config:/run/config",
     "/etc/resolv.conf:/etc/resolv.conf",
   ]
 
