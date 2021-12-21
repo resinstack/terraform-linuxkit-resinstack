@@ -7,5 +7,5 @@ variable "enable_boundary" {
 variable "boundary_version" {
   type        = string
   description = "Version of boundary to run"
-  default     = "0.6.2"
+  default     = "0.7.3"
 }
