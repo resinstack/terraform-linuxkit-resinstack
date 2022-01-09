@@ -18,7 +18,7 @@ data "linuxkit_image" "docker" {
     "/etc/docker/daemon.json:/etc/docker/daemon.json",
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/lib/modules:/lib/modules",
-    "/run:/run:shared",
+    "/run:/run:rshared",
     "/var/persist:/var/persist:rshared",
   ]
 

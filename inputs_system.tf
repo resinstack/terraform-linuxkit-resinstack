@@ -1,7 +1,7 @@
 variable "system_kernel_image" {
   type        = string
   description = "Image containing a kernel and modules"
-  default     = "linuxkit/kernel:5.4.129"
+  default     = "linuxkit/kernel:5.10.76"
 }
 
 variable "system_kernel_cmdline" {
@@ -19,31 +19,37 @@ variable "system_version_unified" {
 variable "system_version_init" {
   type        = string
   description = "Use a different init than the unified version number"
-  default     = "a68f9fa0c1d9dbfc9c23663749a0b7ac510cbe1c"
+  default     = "eb597ef74d808b5320ad1060b1620a6ac31e7ced"
 }
 
 variable "system_version_runc" {
   type        = string
   description = "Use a different runc than the unified version number"
-  default     = ""
+  default     = "9f7aad4eb5e4360cc9ed8778a5c501cce6e21601"
 }
 
 variable "system_version_containerd" {
   type        = string
   description = "Use a different containerd than the unified version number"
-  default     = "1ae8f054e9fe792d1dbdb9a65f1b5e14491cb106"
+  default     = "2f0907913dd54ab5186006034eb224a0da12443e"
 }
 
 variable "system_version_ca_certificates" {
   type        = string
   description = "Use a different ca_certificates than the unified version number"
-  default     = ""
+  default     = "c1c73ef590dffb6a0138cf758fe4a4305c9864f4"
 }
 
 variable "system_version_sysctl" {
   type        = string
   description = "Use a different sysctl than the unified version number"
-  default     = ""
+  default     = "0dc8f792fc3a58afcebcb0fbe6b48de587265c17"
+}
+
+variable "system_version_sysfs" {
+  type = string
+  description = "Use a different sysfs than the unified version number"
+  default = "0148c62dbf57948849e8da829d36363b94a76c97"
 }
 
 variable "system_version_dhcpcd" {
@@ -55,7 +61,7 @@ variable "system_version_dhcpcd" {
 variable "system_version_acpid" {
   type        = string
   description = "Use a different acpid than the unified version number"
-  default     = ""
+  default     = "e9a94e593d6be2fc1b3eb6d566f23ac9ca9807fd"
 }
 
 variable "system_version_metadata" {
@@ -98,6 +104,18 @@ variable "system_version_mount" {
   type        = string
   description = "Use a different mount than the unified version number"
   default     = ""
+}
+
+variable "system_version_logwrite" {
+  type = string
+  description = "Use a different logwrite than the unified version number"
+  default = "568325cf294338b37446943c2b86a8cd8dc703db"
+}
+
+variable "system_version_memlogd" {
+  type = string
+  description = "Use a different memlogd than the unified version number"
+  default = "fe4a123b619a7dfffc2ba1297dd03b4ac90e3dd7"
 }
 
 variable "enable_persist" {

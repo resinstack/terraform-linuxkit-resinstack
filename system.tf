@@ -9,12 +9,18 @@ data "linuxkit_init" "init" {
     "linuxkit/runc:${var.system_version_runc != "" ? var.system_version_runc : var.system_version_unified}",
     "linuxkit/containerd:${var.system_version_containerd != "" ? var.system_version_containerd : var.system_version_unified}",
     "linuxkit/ca-certificates:${var.system_version_ca_certificates != "" ? var.system_version_ca_certificates : var.system_version_unified}",
+    "linuxkit/memlogd:${var.system_version_memlogd != "" ? var.system_version_memlogd : var.system_version_unified}"
   ]
 }
 
 data "linuxkit_image" "sysctl" {
   name  = "sysctl"
   image = "linuxkit/sysctl:${var.system_version_sysctl != "" ? var.system_version_sysctl : var.system_version_unified}"
+}
+
+data "linuxkit_image" "sysfs" {
+  name = "sysfs"
+  image = "linuxkit/sysfs:${var.system_version_sysfs != "" ? var.system_version_sysfs : var.system_version_unified}"
 }
 
 data "linuxkit_image" "dhcp_boot" {
@@ -86,6 +92,11 @@ data "linuxkit_image" "mount" {
   runtime {
     mkdir = ["var/persist"]
   }
+}
+
+data "linuxkit_image" "logwrite" {
+  name = "logwrite"
+  image = "linuxkit/logwrite:${var.system_version_logwrite != "" ? var.system_version_logwrite : var.system_version_unified}"
 }
 
 data "template_file" "containerd_toml" {

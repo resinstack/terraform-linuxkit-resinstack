@@ -4,7 +4,7 @@ data "linuxkit_image" "vault" {
 
   command = [
     "/bin/vault", "server",
-    "-config", "/var/run/config/vault",
+    "-config", "/run/config/vault",
     "-config", "/etc/vault",
   ]
 
@@ -15,7 +15,7 @@ data "linuxkit_image" "vault" {
   ]
 
   binds = [
-    "/var/run/config/vault:/var/run/config/vault",
+    "/run/config/vault:/run/config/vault",
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/etc/vault:/etc/vault",
   ]

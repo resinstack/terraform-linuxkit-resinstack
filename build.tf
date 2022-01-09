@@ -5,10 +5,13 @@ locals {
 
 data "linuxkit_config" "build" {
   kernel = data.linuxkit_kernel.kernel.id
-  init   = [data.linuxkit_init.init.id]
+  init   = [
+    data.linuxkit_init.init.id,
+  ]
 
   onboot = flatten([
     data.linuxkit_image.sysctl.id,
+    data.linuxkit_image.sysfs.id,
     data.linuxkit_image.rngd_boot.id,
     data.linuxkit_image.dhcp_boot.id,
     data.linuxkit_image.metadata.id,
@@ -21,6 +24,7 @@ data "linuxkit_config" "build" {
     data.linuxkit_image.acpid.id,
     data.linuxkit_image.dhcp_svc.id,
     data.linuxkit_image.rngd_svc.id,
+    data.linuxkit_image.logwrite.id,
     local.has_consul ? [data.linuxkit_image.coredns.id] : [],
     local.has_nomad ? [data.linuxkit_image.nomad.id] : [],
     var.enable_boundary ? [data.linuxkit_image.boundary.id] : [],

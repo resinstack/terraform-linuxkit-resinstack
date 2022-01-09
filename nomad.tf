@@ -18,7 +18,7 @@ data "linuxkit_image" "nomad" {
     "/etc/nomad:/etc/nomad",
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/lib/modules:/lib/modules",
-    "/run:/run:shared",
+    "/run:/run:rshared",
     "/var/persist:/var/persist:rshared",
 
     # This looks really really dumb, but hear me out: Nomad needs to

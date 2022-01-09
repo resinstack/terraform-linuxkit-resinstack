@@ -2,7 +2,7 @@ data "linuxkit_image" "emissary" {
   name  = "emissary"
   image = "ghcr.io/resinstack/emissary:${var.emissary_version}"
 
-  capabilities = ["CAP_SYS_ADMIN"]
+  capabilities = ["all"]
 
   binds = [
     "/containers:/containers",

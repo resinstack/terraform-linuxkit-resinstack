@@ -14,7 +14,7 @@ data "linuxkit_image" "consul" {
     "/etc/consul:/etc/consul",
     "/run/resolvconf/resolv.conf:/etc/resolv.conf",
     "/var/persist:/var/persist",
-    "/var/run/config/consul:/var/run/config/consul",
+    "/run/config/consul:/run/config/consul",
   ]
 
   runtime {
