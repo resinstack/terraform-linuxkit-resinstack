@@ -19,6 +19,7 @@ data "linuxkit_image" "docker" {
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/lib/modules:/lib/modules",
     "/run:/run:rshared",
+    "/var/run:/var/run:rshared",
     "/var/persist:/var/persist:rshared",
   ]
 
@@ -39,6 +40,7 @@ data "linuxkit_file" "docker_config" {
     data-root = "/var/persist/docker"
     iptables  = false
     bridge    = "none"
+    debug     = true
   })
 
   mode     = "0644"

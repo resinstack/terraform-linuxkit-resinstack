@@ -2,27 +2,38 @@ data "linuxkit_image" "consul" {
   name  = "consul"
   image = "hashicorp/consul:${var.consul_version}"
 
-  command = [
-    "/bin/consul", "agent",
-    "-config-dir", "/etc/consul",
-    "-config-dir", "/var/run/config/consul"
-  ]
-
-  capabilities = ["CAP_SETUID", "CAP_SETGID"]
+  command = ["/usr/bin/runsv", "/service/consul"]
 
   binds = [
     "/etc/consul:/etc/consul",
-    "/run/resolvconf/resolv.conf:/etc/resolv.conf",
-    "/var/persist:/var/persist",
+    "/run/runit:/run/runit:rshared",
     "/run/config/consul:/run/config/consul",
+    "/run/resolvconf/resolv.conf:/etc/resolv.conf",
+    "/service:/service",
+    "/usr/bin/runsv:/usr/bin/runsv",
+    "/var/persist:/var/persist",
   ]
 
   runtime {
     mkdir = [
       "/var/persist/consul",
       "/var/run/config/consul",
+      "/run/runit/supervise.consul",
     ]
   }
+}
+
+data "linuxkit_file" "consul_svc" {
+  path = "service/consul/run"
+  contents = "#!/bin/sh\nexec /bin/consul agent -config-dir /etc/consul -config-dir /run/config/consul\n"
+  mode = "0755"
+  optional = false
+}
+
+data "linuxkit_file" "consul_spr" {
+  path = "service/consul/supervise"
+  symlink = "/run/runit/supervise.consul"
+  optional = false
 }
 
 data "linuxkit_file" "consul_base" {

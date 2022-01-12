@@ -9,7 +9,8 @@ data "linuxkit_init" "init" {
     "linuxkit/runc:${var.system_version_runc != "" ? var.system_version_runc : var.system_version_unified}",
     "linuxkit/containerd:${var.system_version_containerd != "" ? var.system_version_containerd : var.system_version_unified}",
     "linuxkit/ca-certificates:${var.system_version_ca_certificates != "" ? var.system_version_ca_certificates : var.system_version_unified}",
-    "linuxkit/memlogd:${var.system_version_memlogd != "" ? var.system_version_memlogd : var.system_version_unified}"
+    "linuxkit/memlogd:${var.system_version_memlogd != "" ? var.system_version_memlogd : var.system_version_unified}",
+    "ghcr.io/resinstack/runit:${var.system_version_runit}",
   ]
 }
 

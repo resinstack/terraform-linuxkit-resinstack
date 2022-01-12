@@ -5,23 +5,14 @@ data "linuxkit_image" "emissary" {
   capabilities = ["all"]
 
   binds = [
-    "/containers:/containers",
     "/etc/resolv.conf:/etc/resolv.conf",
     "/run:/run",
-    "/usr/bin/ctr:/usr/bin/ctr",
-    "/usr/bin/restart:/usr/bin/restart",
-    "/usr/bin/service:/usr/bin/service",
+    "/service:/service",
+    "/usr/bin/sv:/usr/bin/sv",
   ]
 
   env = [
     "EMISSARY_TPL_DIR=/run/config/emissary",
     "EMISSARY_INSECURE_URLFILE=/run/config/emissary_insecureurl",
   ]
-}
-
-data "linuxkit_file" "emissary_restart" {
-  path     = "usr/bin/restart"
-  source   = "${path.module}/files/emissary/restart"
-  mode     = "0755"
-  optional = false
 }

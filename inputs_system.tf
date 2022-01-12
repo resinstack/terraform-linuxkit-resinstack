@@ -22,6 +22,12 @@ variable "system_version_init" {
   default     = "eb597ef74d808b5320ad1060b1620a6ac31e7ced"
 }
 
+variable "system_version_runit" {
+  type = string
+  description = "Use a different version of runit"
+  default = "v0.1.1"
+}
+
 variable "system_version_runc" {
   type        = string
   description = "Use a different runc than the unified version number"

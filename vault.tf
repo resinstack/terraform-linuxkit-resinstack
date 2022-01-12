@@ -2,11 +2,7 @@ data "linuxkit_image" "vault" {
   name  = "vault"
   image = "hashicorp/vault:${var.vault_version}"
 
-  command = [
-    "/bin/vault", "server",
-    "-config", "/run/config/vault",
-    "-config", "/etc/vault",
-  ]
+  command = ["/usr/bin/runsv", "/service/vault"]
 
   capabilities = [
     "CAP_SETUID",
@@ -15,7 +11,10 @@ data "linuxkit_image" "vault" {
   ]
 
   binds = [
+    "/service:/service",
+    "/usr/bin/runsv:/usr/bin/runsv",
     "/run/config/vault:/run/config/vault",
+    "/run/runit:/run/runit:rshared",
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/etc/vault:/etc/vault",
   ]
@@ -23,8 +22,22 @@ data "linuxkit_image" "vault" {
   runtime {
     mkdir = [
       "/var/run/config/vault",
+      "/run/runit/supervise.vault",
     ]
   }
+}
+
+data "linuxkit_file" "vault_svc" {
+  path = "service/vault/run"
+  contents = "#!/bin/sh\nexec /bin/vault server -config /run/config/vault -config /etc/vault\n"
+  mode = "0755"
+  optional = false
+}
+
+data "linuxkit_file" "vault_spr" {
+  path = "service/vault/supervise"
+  symlink = "/run/runit/supervise.vault"
+  optional = false
 }
 
 data "linuxkit_file" "vault_ui" {

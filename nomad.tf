@@ -2,11 +2,7 @@ data "linuxkit_image" "nomad" {
   name  = "nomad"
   image = "ghcr.io/resinstack/nomad:${var.nomad_version}"
 
-  command = [
-    "/usr/local/bin/nomad", "agent",
-    "-config", "/etc/nomad",
-    "-config", "/var/run/config/nomad"
-  ]
+  command = ["/usr/bin/runsv", "/service/nomad"]
 
   capabilities = [
     "CAP_CHOWN",
@@ -19,7 +15,10 @@ data "linuxkit_image" "nomad" {
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/lib/modules:/lib/modules",
     "/run:/run:rshared",
+    "/service:/service",
+    "/usr/bin/runsv:/usr/bin/runsv",
     "/var/persist:/var/persist:rshared",
+    "/var/run:/var/run:rshared",
 
     # This looks really really dumb, but hear me out: Nomad needs to
     # see the consul binary while doing connect things.  Rather than
@@ -38,10 +37,24 @@ data "linuxkit_image" "nomad" {
     mkdir = flatten([[
       "/var/persist/nomad",
       "/var/run/config/nomad",
+      "/run/runit/supervise.consul",
     ],
     var.nomad_mkdirs,
     ])
   }
+}
+
+data "linuxkit_file" "nomad_svc" {
+  path = "service/nomad/run"
+  contents = "#!/bin/sh\nexec /usr/local/bin/nomad agent -config /etc/nomad -config /run/config/nomad\n"
+  mode = "0755"
+  optional = false
+}
+
+data "linuxkit_file" "nomad_spr" {
+  path = "service/nomad/supervise"
+  symlink = "/run/runit/supervise.nomad"
+  optional = false
 }
 
 data "linuxkit_file" "nomad_base" {
