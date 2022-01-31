@@ -19,7 +19,7 @@ variable "system_version_unified" {
 variable "system_version_init" {
   type        = string
   description = "Use a different init than the unified version number"
-  default     = "eb597ef74d808b5320ad1060b1620a6ac31e7ced"
+  default     = "7e3d51e6ab5896ecb36a4829450f7430f2878927"
 }
 
 variable "system_version_runit" {
@@ -31,7 +31,7 @@ variable "system_version_runit" {
 variable "system_version_runc" {
   type        = string
   description = "Use a different runc than the unified version number"
-  default     = "9f7aad4eb5e4360cc9ed8778a5c501cce6e21601"
+  default     = ""
 }
 
 variable "system_version_containerd" {
