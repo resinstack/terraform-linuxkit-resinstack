@@ -29,7 +29,7 @@ variable "nomad_vault_integration" {
 }
 
 variable "nomad_mkdirs" {
-  type = list(string)
+  type        = list(string)
   description = "Supplemental directories to create before starting Nomad.  Useful for host volumes."
-  default = []
+  default     = []
 }

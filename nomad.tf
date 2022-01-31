@@ -38,22 +38,22 @@ data "linuxkit_image" "nomad" {
       "/var/persist/nomad",
       "/var/run/config/nomad",
       "/run/runit/supervise.consul",
-    ],
-    var.nomad_mkdirs,
+      ],
+      var.nomad_mkdirs,
     ])
   }
 }
 
 data "linuxkit_file" "nomad_svc" {
-  path = "service/nomad/run"
+  path     = "service/nomad/run"
   contents = "#!/bin/sh\nexec /usr/local/bin/nomad agent -config /etc/nomad -config /run/config/nomad\n"
-  mode = "0755"
+  mode     = "0755"
   optional = false
 }
 
 data "linuxkit_file" "nomad_spr" {
-  path = "service/nomad/supervise"
-  symlink = "/run/runit/supervise.nomad"
+  path     = "service/nomad/supervise"
+  symlink  = "/run/runit/supervise.nomad"
   optional = false
 }
 

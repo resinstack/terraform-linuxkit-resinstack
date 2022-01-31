@@ -24,15 +24,15 @@ data "linuxkit_image" "consul" {
 }
 
 data "linuxkit_file" "consul_svc" {
-  path = "service/consul/run"
+  path     = "service/consul/run"
   contents = "#!/bin/sh\nexec /bin/consul agent -config-dir /etc/consul -config-dir /run/config/consul\n"
-  mode = "0755"
+  mode     = "0755"
   optional = false
 }
 
 data "linuxkit_file" "consul_spr" {
-  path = "service/consul/supervise"
-  symlink = "/run/runit/supervise.consul"
+  path     = "service/consul/supervise"
+  symlink  = "/run/runit/supervise.consul"
   optional = false
 }
 

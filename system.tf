@@ -20,7 +20,7 @@ data "linuxkit_image" "sysctl" {
 }
 
 data "linuxkit_image" "sysfs" {
-  name = "sysfs"
+  name  = "sysfs"
   image = "linuxkit/sysfs:${var.system_version_sysfs != "" ? var.system_version_sysfs : var.system_version_unified}"
 }
 
@@ -96,7 +96,7 @@ data "linuxkit_image" "mount" {
 }
 
 data "linuxkit_image" "logwrite" {
-  name = "logwrite"
+  name  = "logwrite"
   image = "linuxkit/logwrite:${var.system_version_logwrite != "" ? var.system_version_logwrite : var.system_version_unified}"
 }
 

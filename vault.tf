@@ -28,15 +28,15 @@ data "linuxkit_image" "vault" {
 }
 
 data "linuxkit_file" "vault_svc" {
-  path = "service/vault/run"
+  path     = "service/vault/run"
   contents = "#!/bin/sh\nexec /bin/vault server -config /run/config/vault -config /etc/vault\n"
-  mode = "0755"
+  mode     = "0755"
   optional = false
 }
 
 data "linuxkit_file" "vault_spr" {
-  path = "service/vault/supervise"
-  symlink = "/run/runit/supervise.vault"
+  path     = "service/vault/supervise"
+  symlink  = "/run/runit/supervise.vault"
   optional = false
 }
 

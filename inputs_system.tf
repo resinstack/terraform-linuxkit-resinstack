@@ -23,9 +23,9 @@ variable "system_version_init" {
 }
 
 variable "system_version_runit" {
-  type = string
+  type        = string
   description = "Use a different version of runit"
-  default = "v0.1.1"
+  default     = "v0.1.1"
 }
 
 variable "system_version_runc" {
@@ -53,9 +53,9 @@ variable "system_version_sysctl" {
 }
 
 variable "system_version_sysfs" {
-  type = string
+  type        = string
   description = "Use a different sysfs than the unified version number"
-  default = "0148c62dbf57948849e8da829d36363b94a76c97"
+  default     = "0148c62dbf57948849e8da829d36363b94a76c97"
 }
 
 variable "system_version_dhcpcd" {
@@ -113,15 +113,15 @@ variable "system_version_mount" {
 }
 
 variable "system_version_logwrite" {
-  type = string
+  type        = string
   description = "Use a different logwrite than the unified version number"
-  default = "568325cf294338b37446943c2b86a8cd8dc703db"
+  default     = "568325cf294338b37446943c2b86a8cd8dc703db"
 }
 
 variable "system_version_memlogd" {
-  type = string
+  type        = string
   description = "Use a different memlogd than the unified version number"
-  default = "fe4a123b619a7dfffc2ba1297dd03b4ac90e3dd7"
+  default     = "fe4a123b619a7dfffc2ba1297dd03b4ac90e3dd7"
 }
 
 variable "enable_persist" {

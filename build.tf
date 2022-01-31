@@ -5,7 +5,7 @@ locals {
 
 data "linuxkit_config" "build" {
   kernel = data.linuxkit_kernel.kernel.id
-  init   = [
+  init = [
     data.linuxkit_init.init.id,
   ]
 
@@ -64,7 +64,7 @@ data "linuxkit_config" "build" {
 }
 
 resource "linuxkit_build" "build" {
-  config_yaml = data.linuxkit_config.build.yaml
+  config_yaml         = data.linuxkit_config.build.yaml
   docker_cache_enable = true
-  destination = "${local.output_base}.tar"
+  destination         = "${local.output_base}.tar"
 }
