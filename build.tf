@@ -65,5 +65,6 @@ data "linuxkit_config" "build" {
 
 resource "linuxkit_build" "build" {
   config_yaml = data.linuxkit_config.build.yaml
+  docker_cache_enable = true
   destination = "${local.output_base}.tar"
 }
