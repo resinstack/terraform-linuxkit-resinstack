@@ -31,7 +31,7 @@ variable "system_version_runit" {
 variable "system_version_runc" {
   type        = string
   description = "Use a different runc than the unified version number"
-  default     = ""
+  default     = "9f7aad4eb5e4360cc9ed8778a5c501cce6e21601"
 }
 
 variable "system_version_containerd" {

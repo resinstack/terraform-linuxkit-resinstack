@@ -13,6 +13,19 @@ data "linuxkit_image" "docker" {
     options = ["rw", "nosuid", "noexec", "nodev", "relatime"]
   }
 
+  devices {
+    path     = "/dev/console"
+    type     = "c"
+    major    = 5
+    minor    = 1
+    filemode = "0666"
+  }
+
+  devices {
+    path = "all"
+    type = "b"
+  }
+
   binds = [
     "/dev:/dev",
     "/etc/docker/daemon.json:/etc/docker/daemon.json",
