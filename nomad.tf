@@ -78,16 +78,11 @@ data "linuxkit_file" "nomad_client" {
   optional = false
 }
 
-data "template_file" "nomad_acl" {
-  template = file("${path.module}/tmpl/nomad/10-acl.hcl.tpl")
-  vars = {
-    nomad_acl_enabled = var.nomad_acl
-  }
-}
-
 data "linuxkit_file" "nomad_acl" {
   path     = "etc/nomad/10-acl.hcl"
-  contents = data.template_file.nomad_acl.rendered
+  contents = templatefile("${path.module}/tmpl/nomad/10-acl.hcl.tpl", {
+    nomad_acl_enabled = var.nomad_acl
+  })
   mode     = "0644"
   optional = false
 }

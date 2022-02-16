@@ -50,17 +50,12 @@ data "linuxkit_file" "consul_server" {
   optional = false
 }
 
-data "template_file" "consul_acl" {
-  template = file("${path.module}/tmpl/consul/10-acl.hcl.tpl")
-  vars = {
-    consul_acl  = var.consul_acl
-    acl_enabled = var.consul_acl_enabled
-  }
-}
-
 data "linuxkit_file" "consul_acl" {
   path     = "etc/consul/10-acl.hcl"
-  contents = data.template_file.consul_acl.rendered
+  contents = templatefile("${path.module}/tmpl/consul/10-acl.hcl.tpl", {
+    consul_acl  = var.consul_acl
+    acl_enabled = var.consul_acl_enabled
+  })
   mode     = "0644"
   optional = false
 }

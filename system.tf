@@ -100,16 +100,11 @@ data "linuxkit_image" "logwrite" {
   image = "linuxkit/logwrite:${var.system_version_logwrite != "" ? var.system_version_logwrite : var.system_version_unified}"
 }
 
-data "template_file" "containerd_toml" {
-  template = file("${path.module}/tmpl/system/runtime-config.toml.tpl")
-  vars = {
-    log_level = var.system_containerd_log_level
-  }
-}
-
 data "linuxkit_file" "containerd_toml" {
   path     = "etc/containerd/runtime-config.toml"
-  contents = data.template_file.containerd_toml.rendered
+  contents = templatefile("${path.module}/tmpl/system/runtime-config.toml.tpl", {
+    log_level = var.system_containerd_log_level
+  })
   mode     = "0644"
   optional = false
 }
