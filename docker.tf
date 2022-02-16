@@ -53,7 +53,6 @@ data "linuxkit_file" "docker_config" {
     data-root = "/var/persist/docker"
     iptables  = false
     bridge    = "none"
-    debug     = true
   })
 
   mode     = "0644"
