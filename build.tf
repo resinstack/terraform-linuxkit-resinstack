@@ -51,6 +51,8 @@ data "linuxkit_config" "build" {
     local.has_nomad ? [data.linuxkit_file.nomad_base.id] : [],
     local.has_nomad ? [data.linuxkit_file.nomad_acl.id] : [],
     var.consul_server ? [data.linuxkit_file.consul_server.id] : [],
+    var.enable_boundary ? [data.linuxkit_file.boundary_svc.id] : [],
+    var.enable_boundary ? [data.linuxkit_file.boundary_spr.id] : [],
     var.enable_docker ? [data.linuxkit_file.docker_config.id] : [],
     var.enable_ntpd ? [data.linuxkit_file.ntpd_conf.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],

@@ -3,7 +3,7 @@ controller {
   description = "A controller for a demo!"
 
   database {
-    url = "postgresql://postgres:postgres@localhost:5432/postgres?sslmode=disable"
+    url = "postgresql://boundary:boundary@localhost:5432/boundary?sslmode=disable"
   }
 }
 
@@ -18,7 +18,7 @@ listener "tcp" {
   purpose = "api"
   tls_disable = true
 
-  address = "127.0.0.1"
+  address = "0.0.0.0"
 }
 
 listener "tcp" {
