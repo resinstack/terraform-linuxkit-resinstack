@@ -1,5 +1,5 @@
 data "linuxkit_image" "docker" {
-  name  = "docker"
+  name  = "dockerd"
   image = "docker:${var.docker_version}"
 
   command = ["/usr/local/bin/docker-init", "/usr/local/bin/dockerd"]
