@@ -37,7 +37,7 @@ data "linuxkit_image" "nomad" {
     mkdir = flatten([[
       "/var/persist/nomad",
       "/var/run/config/nomad",
-      "/run/runit/supervise.consul",
+      "/run/runit/supervise.nomad",
       ],
       var.nomad_mkdirs,
     ])
