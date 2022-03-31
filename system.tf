@@ -101,7 +101,7 @@ data "linuxkit_image" "logwrite" {
 }
 
 data "linuxkit_file" "containerd_toml" {
-  path     = "etc/containerd/runtime-config.toml"
+  path = "etc/containerd/runtime-config.toml"
   contents = templatefile("${path.module}/tmpl/system/runtime-config.toml.tpl", {
     log_level = var.system_containerd_log_level
   })

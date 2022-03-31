@@ -79,7 +79,7 @@ data "linuxkit_file" "nomad_client" {
 }
 
 data "linuxkit_file" "nomad_acl" {
-  path     = "etc/nomad/10-acl.hcl"
+  path = "etc/nomad/10-acl.hcl"
   contents = templatefile("${path.module}/tmpl/nomad/10-acl.hcl.tpl", {
     nomad_acl_enabled = var.nomad_acl
   })

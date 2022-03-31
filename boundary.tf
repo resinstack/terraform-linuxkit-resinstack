@@ -27,14 +27,14 @@ data "linuxkit_image" "boundary" {
 }
 
 data "linuxkit_file" "boundary_svc" {
-  path = "service/boundary/run"
+  path     = "service/boundary/run"
   contents = "#!/bin/sh\nexec boundary server -config /run/config/boundary/boundary.hcl\n"
-  mode = "0755"
+  mode     = "0755"
   optional = false
 }
 
 data "linuxkit_file" "boundary_spr" {
-  path = "service/boundary/supervise"
-  symlink = "/run/runit/supervise.boundary"
+  path     = "service/boundary/supervise"
+  symlink  = "/run/runit/supervise.boundary"
   optional = false
 }
