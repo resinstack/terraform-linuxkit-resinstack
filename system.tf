@@ -81,8 +81,9 @@ data "linuxkit_image" "ntpd" {
 }
 
 data "linuxkit_image" "format" {
-  name  = "openformat"
-  image = "linuxkit/format:${var.system_version_format != "" ? var.system_version_format : var.system_version_unified}"
+  name    = "openformat"
+  image   = "linuxkit/format:${var.system_version_format != "" ? var.system_version_format : var.system_version_unified}"
+  command = var.system_format_cmd
 }
 
 data "linuxkit_image" "mount" {

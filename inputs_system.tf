@@ -147,3 +147,9 @@ variable "system_ntpd_servers" {
   description = "DNS hostname or single IP pointing to ntp sync source"
   default     = "pool.ntp.org"
 }
+
+variable "system_format_cmd" {
+  type        = list(string)
+  description = "Command to run for formatting persistent disk"
+  default     = ["/usr/bin/format"]
+}
