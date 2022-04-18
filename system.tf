@@ -111,7 +111,7 @@ data "linuxkit_file" "containerd_toml" {
 }
 
 data "linuxkit_file" "ntpd_conf" {
-  contents = "servers ${var.system_ntpd_servers}\n"
+  contents = "servers ${var.system_ntpd_servers}\nconstraints from \"${var.system_ntpd_constraints}\"\n"
   path     = "etc/ntpd.conf"
   mode     = "0644"
   optional = false

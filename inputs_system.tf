@@ -148,6 +148,12 @@ variable "system_ntpd_servers" {
   default     = "pool.ntp.org"
 }
 
+variable "system_ntpd_constraints" {
+  type = string
+  description = "HTTPS domain or IP to retrieve constriants from"
+  default = "https://www.google.com"
+}
+
 variable "system_format_cmd" {
   type        = list(string)
   description = "Command to run for formatting persistent disk"
