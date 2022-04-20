@@ -17,8 +17,7 @@ data "linuxkit_image" "nomad" {
     "/run:/run:rshared",
     "/service:/service",
     "/usr/bin/runsv:/usr/bin/runsv",
-    "/var/persist:/var/persist:rshared",
-    "/var/run:/var/run:rshared",
+    "/var:/var:rshared",
 
     # This looks really really dumb, but hear me out: Nomad needs to
     # see the consul binary while doing connect things.  Rather than
