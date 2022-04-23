@@ -34,6 +34,7 @@ data "linuxkit_config" "build" {
     var.enable_emissary ? [data.linuxkit_image.emissary.id] : [],
     var.enable_ntpd ? [data.linuxkit_image.ntpd.id] : [],
     var.enable_sshd ? [data.linuxkit_image.sshd.id] : [],
+    var.enable_step ? [data.linuxkit_image.step.id] : [],
     var.vault_server ? [data.linuxkit_image.vault.id] : [],
     var.custom_services,
   ])
@@ -55,6 +56,7 @@ data "linuxkit_config" "build" {
     var.enable_boundary ? [data.linuxkit_file.boundary_spr.id] : [],
     var.enable_docker ? [data.linuxkit_file.docker_config.id] : [],
     var.enable_ntpd ? [data.linuxkit_file.ntpd_conf.id] : [],
+    var.enable_step ? [data.linuxkit_file.step.id] : [],
     var.nomad_client ? [data.linuxkit_file.nomad_client.id] : [],
     var.nomad_server ? [data.linuxkit_file.nomad_server.id] : [],
     var.nomad_vault_integration && local.has_nomad ? [data.linuxkit_file.nomad_client_vault.id] : [],
