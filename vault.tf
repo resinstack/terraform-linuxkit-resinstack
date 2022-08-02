@@ -11,16 +11,17 @@ data "linuxkit_image" "vault" {
   ]
 
   binds = [
-    "/service:/service",
-    "/usr/bin/runsv:/usr/bin/runsv",
-    "/run/config/vault:/run/config/vault",
-    "/run/runit:/run/runit:rshared",
     "/etc/resolv.cluster:/etc/resolv.conf",
     "/etc/vault:/etc/vault",
+    "/run:/run:rshared",
+    "/service:/service",
+    "/usr/bin/runsv:/usr/bin/runsv",
+    "/var:/var:rshared",
   ]
 
   runtime {
     mkdir = [
+      "/var/persist/vault",
       "/var/run/config/vault",
       "/run/runit/supervise.vault",
     ]
@@ -45,5 +46,12 @@ data "linuxkit_file" "vault_ui" {
 
   contents = "ui = true\n"
   mode     = "0644"
+  optional = false
+}
+
+data "linuxkit_file" "vault_cert_reload" {
+  path = "usr/libexec/step/on-renew/50-vault-reload"
+  contents = "#!/bin/sh\n/usr/bin/sv reload vault\n"
+  mode = "0755"
   optional = false
 }

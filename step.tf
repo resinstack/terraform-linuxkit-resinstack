@@ -7,6 +7,9 @@ data "linuxkit_image" "step" {
 
   binds = [
     "/run:/run",
+    "/service:/service",
+    "/usr/bin/sv:/usr/bin/sv",
+    "/usr/libexec/step/on-renew:/usr/libexec/step/on-renew",
     "/usr/local/bin/node-certificate:/usr/local/bin/node-certificate",
   ]
 }

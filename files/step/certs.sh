@@ -15,5 +15,6 @@ while true ; do
     step ca renew /run/config/step/node.crt /run/config/step/node.key \
      --daemon \
      --ca-url $(cat /run/config/step/ca-url) \
-     --root /run/config/step/root_ca.crt
+     --root /run/config/step/root_ca.crt \
+     --exec "/bin/run-parts /usr/libexec/step/on-renew"
 done

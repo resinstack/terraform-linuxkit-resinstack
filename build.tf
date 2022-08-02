@@ -28,6 +28,7 @@ data "linuxkit_config" "build" {
     local.has_consul ? [data.linuxkit_image.coredns.id] : [],
     local.has_nomad ? [data.linuxkit_image.nomad.id] : [],
     var.enable_boundary ? [data.linuxkit_image.boundary.id] : [],
+    var.vault_agent ? [data.linuxkit_image.vault_agent.id] : [],
     var.enable_console ? [data.linuxkit_image.getty.id] : [],
     var.enable_consul ? [data.linuxkit_image.consul.id] : [],
     var.enable_docker ? [data.linuxkit_image.docker.id] : [],
@@ -63,6 +64,13 @@ data "linuxkit_config" "build" {
     var.vault_server ? [data.linuxkit_file.vault_svc.id] : [],
     var.vault_server ? [data.linuxkit_file.vault_spr.id] : [],
     var.vault_server && var.vault_ui ? [data.linuxkit_file.vault_ui.id] : [],
+    var.vault_server && var.enable_step ? [data.linuxkit_file.vault_cert_reload.id] : [],
+    var.vault_agent ? [data.linuxkit_file.vault_agent_svc.id] : [],
+    var.vault_agent ? [data.linuxkit_file.vault_agent_spr.id] : [],
+    var.vault_agent && var.enable_step ? [data.linuxkit_file.vault_agent_cert_reload.id] : [],
+    var.vault_agent ? [data.linuxkit_file.vault_agent_config.id] : [],
+    var.vault_agent && local.has_consul ? [data.linuxkit_file.vault_agent_consul_tpl.id] : [],
+    var.vault_agent && var.vault_server ? [data.linuxkit_file.vault_agent_server_tpl.id] : [],
     var.custom_files
   ])
 }
