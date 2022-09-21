@@ -71,6 +71,8 @@ data "linuxkit_config" "build" {
     var.vault_agent ? [data.linuxkit_file.vault_agent_config.id] : [],
     var.vault_agent && local.has_consul ? [data.linuxkit_file.vault_agent_consul_tpl.id] : [],
     var.vault_agent && var.vault_server ? [data.linuxkit_file.vault_agent_server_tpl.id] : [],
+    var.vault_agent && var.nomad_server ? [data.linuxkit_file.vault_agent_nomad_server_tpl.id] : [],
+    var.vault_agent && var.nomad_client ? [data.linuxkit_file.vault_agent_nomad_client_tpl.id] : [],
     var.custom_files
   ])
 }

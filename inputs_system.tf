@@ -149,9 +149,9 @@ variable "system_ntpd_servers" {
 }
 
 variable "system_ntpd_constraints" {
-  type = string
+  type        = string
   description = "HTTPS domain or IP to retrieve constriants from"
-  default = "https://www.google.com"
+  default     = "https://www.google.com"
 }
 
 variable "system_format_cmd" {

@@ -1,3 +1,3 @@
 service_registration "consul" {
-  token = "{{ with secret "consul/creds/vault" }}{{ .Data.token }}{{ end }}"
+  token = "{{ with secret "resin_internal/vault/consul_token" }}{{ .Data.data.token }}{{ end }}"
 }

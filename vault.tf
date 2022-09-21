@@ -50,8 +50,8 @@ data "linuxkit_file" "vault_ui" {
 }
 
 data "linuxkit_file" "vault_cert_reload" {
-  path = "usr/libexec/step/on-renew/50-vault-reload"
+  path     = "usr/libexec/step/on-renew/50-vault-reload"
   contents = "#!/bin/sh\n/usr/bin/sv reload vault\n"
-  mode = "0755"
+  mode     = "0755"
   optional = false
 }

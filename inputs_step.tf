@@ -1,11 +1,11 @@
 variable "enable_step" {
-  type = bool
+  type        = bool
   description = "Enable step machine certificate management"
-  default = true
+  default     = true
 }
 
 variable "step_version" {
-  type = string
+  type        = string
   description = "Version of the step tools to install"
-  default = "0.19.0"
+  default     = "0.19.0"
 }

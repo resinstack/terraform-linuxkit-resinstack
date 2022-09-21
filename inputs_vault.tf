@@ -1,7 +1,7 @@
 variable "vault_agent" {
-  type = bool
+  type        = bool
   description = "Enable the vault agent"
-  default = false
+  default     = false
 }
 
 variable "vault_server" {
@@ -20,4 +20,14 @@ variable "vault_ui" {
   type        = bool
   description = "Enable the web UI"
   default     = true
+}
+
+variable "vault_agent_role" {
+  type        = string
+  description = "Vault role for this server image to assume"
+}
+
+variable "vault_agent_address" {
+  type        = string
+  description = "Address of the vault server"
 }
