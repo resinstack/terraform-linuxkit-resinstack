@@ -27,3 +27,10 @@ resource "linuxkit_image_aws" "aws" {
   size        = var.build_aws_size
   destination = "${local.output_base}_aws.img"
 }
+
+resource "linuxkit_image_vmdk" "vmdk" {
+  count = var.build_vmdk ? 1 : 0
+
+  build       = linuxkit_build.build.destination
+  destination = "${local.output_base}_vmdk.img"
+}

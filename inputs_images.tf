@@ -27,3 +27,9 @@ variable "build_aws_size" {
   description = "Size in MB for the AWS image"
   default     = 1000
 }
+
+variable "build_vmdk" {
+  type        = bool
+  description = "Build VMDK image"
+  default     = false
+}
