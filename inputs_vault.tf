@@ -13,7 +13,7 @@ variable "vault_server" {
 variable "vault_version" {
   type        = string
   description = "Vault server version"
-  default     = "1.11.2"
+  default     = "1.12.1"
 }
 
 variable "vault_ui" {
