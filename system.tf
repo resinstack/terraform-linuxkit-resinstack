@@ -55,7 +55,7 @@ data "linuxkit_image" "getty" {
 data "linuxkit_image" "sshd" {
   name  = "sshd"
   image = "linuxkit/sshd:${var.system_version_sshd != "" ? var.system_version_sshd : var.system_version_unified}"
-  binds = [
+  binds_add = [
     "/run/config/ssh/authorized_keys:/root/.ssh/authorized_keys",
   ]
 }

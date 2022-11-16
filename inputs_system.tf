@@ -85,7 +85,7 @@ variable "system_version_getty" {
 variable "system_version_sshd" {
   type        = string
   description = "Use a different sshd than the unified version number"
-  default     = "4696ba61c3ec091328e1c14857d77e675802342f"
+  default     = "7e71b29a4223436c741d73149f880f7bf5d44dd7"
 }
 
 variable "system_version_rngd" {
