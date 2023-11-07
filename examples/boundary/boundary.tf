@@ -46,7 +46,6 @@ module "boundary" {
   source = "../../"
 
   enable_console  = true
-  enable_emissary = true
 
   enable_consul = false
   enable_docker = false

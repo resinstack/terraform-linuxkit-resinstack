@@ -32,7 +32,6 @@ data "linuxkit_config" "build" {
     var.enable_console ? [data.linuxkit_image.getty.id] : [],
     var.enable_consul ? [data.linuxkit_image.consul.id] : [],
     var.enable_docker ? [data.linuxkit_image.docker.id] : [],
-    var.enable_emissary ? [data.linuxkit_image.emissary.id] : [],
     var.enable_ntpd ? [data.linuxkit_image.ntpd.id] : [],
     var.enable_sshd ? [data.linuxkit_image.sshd.id] : [],
     var.enable_step ? [data.linuxkit_image.step.id] : [],
